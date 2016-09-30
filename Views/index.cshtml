@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HomePage</title>
+  </head>
+  <body>
+    <h1>bandList</h1>
+    @foreach (var band in Model["bandList"])
+    {
+      <h4><a href="/bands/@band.GetId()">@band.GetName()</a></h4>
+    }
+
+
+        <p>
+          <h2>Add a band</h2>
+          <form action="/add_band" method="post">
+            <input type="string" name="bandName" placeholder="Enter a band name"><br>
+            <button type="submit">submit</button>
+          </form>
+        </p>
+
+
+
+
+
+    <h1>venueList</h1>
+    @foreach (var venue in Model["venueList"])
+    {
+      <h4><a href="/venues/@venue.GetId()">@venue.GetName()</a></h4>
+    }
+
+
+
+        <p>
+          <h2>Add a course</h2>
+          <form action="/add_venue" method="post">
+            <input type="string" name="venueName" placeholder="Enter a venue name"><br>
+            <button type="submit">submit</button>
+          </form>
+        </p>
+
+
+
+
+  </body>
+</html>

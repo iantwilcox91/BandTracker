@@ -11,7 +11,15 @@ namespace BandTracker
   {
     public HomeModule()
     {
-
+      Get["/"] = _ =>
+      {
+        List<Band> bandList = Band.GetAll();
+        List<Venue> venueList = Venue.GetAll();
+        Dictionary<string, object> model = new Dictionary<string, object> {};
+        model.Add("bandList", bandList);
+        model.Add("venueList", venueList);
+        return View["index.cshtml", model];
+      };
 
 
     }
