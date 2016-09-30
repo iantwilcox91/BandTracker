@@ -130,6 +130,7 @@ namespace BandTracker
 
       conn.Close();
     }
+
     // public List<Venue> ViewVenues()
     // {
     //   SqlConnection conn = DB.Connection();
