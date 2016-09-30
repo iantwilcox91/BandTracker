@@ -139,41 +139,41 @@ namespace BandTracker
       conn.Close();
     }
 
-    //
-    // public List<Band> ViewBands()
-    // {
-    //   SqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //
-    //   SqlCommand cmd = new SqlCommand("SELECT bands.* FROM venues JOIN venuesBands ON (bands.id = venuesBands.bandId) JOIN venues ON (venuesBands.venueId = venues.id) WHERE venues.id = @bandId;", conn);
-    //   SqlParameter BandIdParam = new SqlParameter();
-    //   BandIdParam.ParameterName = "@bandId";
-    //   BandIdParam.Value = this.GetId().ToString();
-    //
-    //   cmd.Parameters.Add(BandIdParam);
-    //
-    //   SqlDataReader rdr = cmd.ExecuteReader();
-    //
-    //   List<Venue> venueList = new List<Venue>{};
-    //
-    //   while(rdr.Read())
-    //   {
-    //     int venueId = rdr.GetInt32(0);
-    //     string venueName = rdr.GetString(1);
-    //     Venue newVenue = new Venue(venueName, venueId);
-    //     venueList.Add(newVenue);
-    //   }
-    //
-    //   if (rdr != null)
-    //   {
-    //     rdr.Close();
-    //   }
-    //   if (conn != null)
-    //   {
-    //     conn.Close();
-    //   }
-    //   return venueList;
-    // }
+
+    public List<Venue> ViewVenues()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT venues.* FROM bands JOIN venuesBands ON (bands.id = venuesBands.bandId) JOIN venues ON (venuesBands.venueId = venues.id) WHERE bands.id = @bandId;", conn);
+      SqlParameter BandIdParam = new SqlParameter();
+      BandIdParam.ParameterName = "@bandId";
+      BandIdParam.Value = this.GetId().ToString();
+
+      cmd.Parameters.Add(BandIdParam);
+
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      List<Venue> venueList = new List<Venue>{};
+
+      while(rdr.Read())
+      {
+        int venueId = rdr.GetInt32(0);
+        string venueName = rdr.GetString(1);
+        Venue newVenue = new Venue(venueName, venueId);
+        venueList.Add(newVenue);
+      }
+
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return venueList;
+    }
 
     public void AddVenue(Venue venue)
     {
