@@ -28,18 +28,31 @@ namespace BandTracker
       Assert.Equal("VenueName", newVenue.GetName() );
     }
     [Fact]
-    public void Test_Save_CanWeSaveToTheDatabase()
+    public void Test_Save_CanWeSaveVenuesToTheDatabase()
     {
-      //Arrange
       Venue newVenue = new Venue("VenueName");
-      //Act
       newVenue.Save();
-      //Assert
       List<Venue> allVenue = Venue.GetAll();
       List<Venue> testVenue = new List<Venue> {newVenue};
       Assert.Equal( testVenue, allVenue );
     }
 
+    [Fact]
+    public void Test_DeleteOnlyOneVenue()
+    {
+      //Arrange
+      Venue newVenue = new Venue("VenueName");
+      newVenue.Save();
+      Venue newVenue2 = new Venue("VenueName2");
+      newVenue2.Save();
+      // Act
+      newVenue.Delete();
+      //Arrange
+      List<Venue> allVenues = Venue.GetAll();
+      List<Venue> resultVenues = new List<Venue> {newVenue2};
+      //Assert
+      Assert.Equal(resultVenues , allVenues);
+    }
 
 
 

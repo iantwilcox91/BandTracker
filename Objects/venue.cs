@@ -116,16 +116,16 @@ namespace BandTracker
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlParameter pam = new SqlParameter ("@venueId", this._id);
-      string query = "DELETE FROM venuesBands WHERE BandId = @venueId;";
+      string query = "DELETE FROM venuesBands WHERE VenueId = @venueId;";
       SqlCommand cmd = new SqlCommand(query, conn);
-      cmd.Parameters.Add(pam);
+      SqlParameter parameter = new SqlParameter ("@venueId", this._id);
+      cmd.Parameters.Add(parameter);
       cmd.ExecuteNonQuery();
 
-      SqlParameter pam2 = new SqlParameter ("@venueId", this._id);
       string query2 = "DELETE FROM venues WHERE id = @venueId;";
       SqlCommand cmd2 = new SqlCommand(query2, conn);
-      cmd2.Parameters.Add(pam2);
+      SqlParameter parameter2 = new SqlParameter ("@venueId", this._id);
+      cmd2.Parameters.Add(parameter2);
       cmd2.ExecuteNonQuery();
 
       conn.Close();

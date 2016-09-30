@@ -62,8 +62,8 @@ namespace BandTracker
       {
         id = rdr.GetInt32(0);
         name = rdr.GetString(1);
-        Band band = new Band(name, id);
-        bandList.Add(band);
+        Band newBand = new Band(name, id);
+        bandList.Add(newBand);
       }
       if (rdr != null)
       {
@@ -93,8 +93,9 @@ namespace BandTracker
       conn.Open();
       string query = "INSERT INTO bands (name) OUTPUT INSERTED.id VALUES (@bandName);";
       SqlCommand cmd = new SqlCommand(query,conn);
-      SqlParameter parameter = new SqlParameter ("@bandName", this._name);
-      cmd.Parameters.Add(parameter);
+      SqlParameter nameParameter = new SqlParameter ("@bandName", this._name);
+      cmd.Parameters.Add(nameParameter);
+
 
       SqlDataReader rdr = cmd.ExecuteReader();
 
@@ -111,6 +112,13 @@ namespace BandTracker
         conn.Close();
       }
     }
+
+
+
+
+
+
+
     public void Delete()
     {
       SqlConnection conn = DB.Connection();
@@ -130,6 +138,8 @@ namespace BandTracker
 
       conn.Close();
     }
+
+
     // public List<Band> ViewBands()
     // {
     //   SqlConnection conn = DB.Connection();

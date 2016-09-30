@@ -28,16 +28,33 @@ namespace BandTracker
       Assert.Equal("BandName", newBand.GetName() );
     }
     [Fact]
-    public void Test_Save_CanWeSaveToTheDatabase()
+    public void Test_Save_CanWeSaveABandToTheDatabase()
+    {
+      //Arrange
+      Band band =  new Band ("BandName");
+      //Act
+      band.Save();
+      //Assert
+      List<Band> allBand = Band.GetAll();
+      List<Band> testBand = new List<Band> {band};
+      Assert.Equal( testBand, allBand );
+    }
+
+    [Fact]
+    public void Test_DeleteOnlyOneBand()
     {
       //Arrange
       Band newBand = new Band("BandName");
-      //Act
       newBand.Save();
+      Band newBand2 = new Band("BandName2");
+      newBand2.Save();
+      // Act
+      newBand.Delete();
+      //Arrange
+      List<Band> allBands = Band.GetAll();
+      List<Band> resultBands = new List<Band> {newBand2};
       //Assert
-      List<Band> allBand = Band.GetAll();
-      List<Band> testBand = new List<Band> {newBand};
-      Assert.Equal( testBand, allBand );
+      Assert.Equal(resultBands , allBands);
     }
 
 
