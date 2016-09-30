@@ -1,3 +1,5 @@
+sqlcmd -S "(localdb)\mssqllocaldb"
+
 CREATE DATABASE BandTracker;
 GO
 USE BandTracker;

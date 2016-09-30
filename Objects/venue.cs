@@ -130,40 +130,40 @@ namespace BandTracker
 
       conn.Close();
     }
-    public List<Venue> ViewVenues()
-    {
-      SqlConnection conn = DB.Connection();
-      conn.Open();
-
-      SqlCommand cmd = new SqlCommand("SELECT venues.* FROM bands JOIN venuesBands ON (venues.id = venuesBands.venueId) JOIN bands ON (venuesBands.bandId = bands.id) WHERE bands.id = @venuesId;", conn);
-      SqlParameter VenueIdParam = new SqlParameter();
-      VenueIdParam.ParameterName = "@venuesId";
-      VenueIdParam.Value = this.GetId().ToString();
-
-      cmd.Parameters.Add(VenueIdParam);
-
-      SqlDataReader rdr = cmd.ExecuteReader();
-
-      List<Band> bandList = new List<Band>{};
-
-      while(rdr.Read())
-      {
-        int bandId = rdr.GetInt32(0);
-        string bandName = rdr.GetString(1);
-        Band newBand = new Band(bandName, bandId);
-        venueList.Add(newBand);
-      }
-
-      if (rdr != null)
-      {
-        rdr.Close();
-      }
-      if (conn != null)
-      {
-        conn.Close();
-      }
-      return bandList;
-    }
+    // public List<Venue> ViewVenues()
+    // {
+    //   SqlConnection conn = DB.Connection();
+    //   conn.Open();
+    //
+    //   SqlCommand cmd = new SqlCommand("SELECT venues.* FROM bands JOIN venuesBands ON (venues.id = venuesBands.venueId) JOIN bands ON (venuesBands.bandId = bands.id) WHERE bands.id = @venuesId;", conn);
+    //   SqlParameter VenueIdParam = new SqlParameter();
+    //   VenueIdParam.ParameterName = "@venuesId";
+    //   VenueIdParam.Value = this.GetId().ToString();
+    //
+    //   cmd.Parameters.Add(VenueIdParam);
+    //
+    //   SqlDataReader rdr = cmd.ExecuteReader();
+    //
+    //   List<Band> bandList = new List<Band>{};
+    //
+    //   while(rdr.Read())
+    //   {
+    //     int bandId = rdr.GetInt32(0);
+    //     string bandName = rdr.GetString(1);
+    //     Band newBand = new Band(bandName, bandId);
+    //     bandList.Add(newBand);
+    //   }
+    //
+    //   if (rdr != null)
+    //   {
+    //     rdr.Close();
+    //   }
+    //   if (conn != null)
+    //   {
+    //     conn.Close();
+    //   }
+    //   return bandList;
+    // }
 
     public void AddBand(Band band)
     {
