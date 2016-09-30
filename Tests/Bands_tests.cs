@@ -21,7 +21,12 @@ namespace BandTracker
       //Assert
       Assert.Equal( 0, tableRows);
     }
-
+    [Fact]
+    public void Test_checkGetFunction()
+    {
+      Band newBand = new Band("BandName");
+      Assert.Equal("BandName", newBand.GetName() );
+    }
 
 
 

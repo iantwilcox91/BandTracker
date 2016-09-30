@@ -21,7 +21,12 @@ namespace BandTracker
       //Assert
       Assert.Equal( 0, tableRows);
     }
-
+    [Fact]
+    public void Test_checkGetFunction()
+    {
+      Venue newVenue = new Venue("VenueName");
+      Assert.Equal("VenueName", newVenue.GetName() );
+    }
 
 
 
