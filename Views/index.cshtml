@@ -8,7 +8,7 @@
     <h1>List Of Bands</h1>
     @foreach (var band in Model["bandList"])
     {
-      <h2><a href="/bands/@band.GetId()">@band.GetName()</a> | <a href="/bands/edit/@band.GetId()">Edit</a> | <a href="/bands/delete/@band.GetId()">Delete</a></li></h2>
+      <h2><a href="/bands/@band.GetId()">@band.GetName()</a> | <a href="/bands/edit/@band.GetId()">Edit</a> | <a href="/bands/delete/@band.GetId()">Delete</a></h2>
     }
     <p>
       <h4>Add a band</h4>
@@ -21,11 +21,11 @@
     <h1>List Of Venues</h1>
     @foreach (var venue in Model["venueList"])
     {
-      <h2><a href="/venues/@venue.GetId()">@venue.GetName()</a> | <a href="/venues/edit/@venue.GetId()">Edit</a> | <a href="/venues/delete/@venue.GetId()">Delete</a></li></h2>
+      <h2><a href="/venues/@venue.GetId()">@venue.GetName()</a> | <a href="/venues/edit/@venue.GetId()">Edit</a> | <a href="/venues/delete/@venue.GetId()">Delete</a></h2>
     }
 
     <p>
-      <h4>Add a course</h4>
+      <h4>Add a venue</h4>
       <form action="/add_venue" method="post">
         <input type="string" name="venueName" placeholder="Enter a venue name"><br>
         <button type="submit">submit</button>
