@@ -78,7 +78,12 @@ namespace BandTracker
       Patch["/bands/edit/{id}"] = parameters => {
         Band SelectedBand = Band.Find(parameters.id);
         SelectedBand.Update(Request.Form["band-name"]);
-        return View["index.cshtml", SelectedBand];
+        List<Band> bandList = Band.GetAll();
+        List<Venue> venueList = Venue.GetAll();
+        Dictionary<string, object> model = new Dictionary<string, object> {};
+        model.Add("bandList", bandList);
+        model.Add("venueList", venueList);
+        return View["index.cshtml", model];
       };
 
       Get["/bands/edit/{id}"] = parameters => {
@@ -116,7 +121,12 @@ namespace BandTracker
       Patch["/venues/edit/{id}"] = parameters => {
         Venue SelectedVenue = Venue.Find(parameters.id);
         SelectedVenue.Update(Request.Form["venue-name"]);
-        return View["index.cshtml", SelectedVenue];
+        List<Band> bandList = Band.GetAll();
+        List<Venue> venueList = Venue.GetAll();
+        Dictionary<string, object> model = new Dictionary<string, object> {};
+        model.Add("bandList", bandList);
+        model.Add("venueList", venueList);
+        return View["index.cshtml", model];
       };
 
 
