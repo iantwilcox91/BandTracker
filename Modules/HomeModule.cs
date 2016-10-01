@@ -52,8 +52,12 @@ namespace BandTracker
       Get["/bands/{id}"] = parameters =>
       {
         Band band = Band.Find(parameters.id);
+        List<Venue> bandVenue = band.ViewVenues();
+        List<Venue> allVenues = Venue.GetAll();
         Dictionary<string ,object> model = new Dictionary<string, object> {};
         model.Add("band", band);
+        model.Add("venues", bandVenue);
+        model.Add("allVenues", allVenues);
         return View["bands.cshtml", model];
       };
 
@@ -61,8 +65,12 @@ namespace BandTracker
       Get["/venues/{id}"] = parameters =>
       {
         Venue venue = Venue.Find(parameters.id);
+        List<Band> venueBand = venue.ViewBands();
+        List<Band> allBands = Band.GetAll();
         Dictionary<string ,object> model = new Dictionary<string, object> {};
         model.Add("venue", venue);
+        model.Add("bands", venueBand);
+        model.Add("allBands", allBands);
         return View["venues.cshtml", model];
       };
 

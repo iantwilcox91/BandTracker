@@ -6,6 +6,26 @@
   </head>
   <body>
     <h1>@Model["band"].GetName()</h1>
+
+    <h3>Venues</h3>
+        @foreach (var venue in Model["venues"])
+        {
+          <h4>@venue.GetName()</h4>
+        }
+        <h2>Add a venue</h2>
+        <form action='/band/@Model["band"].GetId()' method="post">
+          <select name="venue">
+            @foreach (var venue in Model["allVenues"])
+            {
+            <option value="@venue.GetId()">@venue.GetName()</option>
+            }
+          </select>
+          <button type="submit">submit</button>
+        </form>
+        <br>
+
+
+
     <a href="/">Return to the Homepage</a>
   </body>
 </html>
