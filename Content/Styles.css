@@ -1,0 +1,24 @@
+.bodyHome {
+  background-image: url("http://www.lifetoremember.net/wp-content/uploads/2014/07/Homepage-Background-Yellow-2.jpg");
+}
+.bodyVenue {
+  background-image: url("http://www.powerpointthemes.net/wp-content/uploads/2015/09/lighting-wood-background.jpg");
+}
+.bodyBand {
+  background-image: url("http://hebus.org/files/Textures/Wood%20Background%201600x1200%20(5).jpg");
+}
+.textblue {
+  color: blue;
+}
+.textred {
+  color: red;
+}
+.textwhite{
+  color: white;
+}
+.textorange{
+  color: orange;
+}
+.textpurple{
+  color: purple;
+}

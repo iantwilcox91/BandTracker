@@ -3,16 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>This Band</title>
-  </head>
-  <body>
-    <h1>@Model["band"].GetName()</h1>
+    <link rel="stylesheet" href="../content/Styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <h3>Venues</h3>
+  </head>
+  <body class="bodyBand">
+    <h1 class="textred">@Model["band"].GetName()</h1>
+
+    <h3 class="textred">Venues</h3>
         @foreach (var venue in Model["venues"])
         {
-          <h4>@venue.GetName()</h4>
+          <h4 class="textorange">@venue.GetName()</h4>
         }
-        <h2>Add a venue</h2>
+        <h2 class="textred">Add a venue</h2>
         <form action='/band/@Model["band"].GetId()' method="post">
           <select name="venue">
             @foreach (var venue in Model["allVenues"])
